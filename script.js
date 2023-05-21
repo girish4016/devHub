@@ -12,15 +12,26 @@ async function search_user(){
     let search_bar = document.querySelector('.search_bar');
     let username = search_bar.value;
     if(username==="")username = 'github';
-    let apcall = await fetch(`https://api.github.com/users/${username}`);
+    let apcall;// = await fetch(`https://api.github.com/users/${username}`);
+    try{
+        apcall = await fetch(`https://api.github.com/users/${username}`);
+    }catch(e){
+        return;
+    }
     let userDet = await apcall.json();
     // Test
     console.log(username)
     console.log(userDet);
     // 
 
-    
+    if(apcall?.ok)
     update_details(userDet);
+    else{
+        document.querySelector('.error_display').style.display = 'flex';
+        setTimeout(function(){
+            document.querySelector('.error_display').style.display = 'none';
+        },2000)
+    }
 }
 
 
@@ -84,7 +95,77 @@ function update_details (userDet){
     else
     document.querySelector('.twitter_link a').href = `https://twitter.com/${userDet?.twitter_username}` ;
 
-
-    
-
 }
+
+
+// dark mode :
+
+let mode = 1;
+
+let mode_selecter = document.querySelector('.dark_mode');
+mode_selecter.addEventListener('click',invert_mode);
+
+function invert_mode(){
+    if(mode){
+        mode = 0;
+        document.querySelector('.wrapper').classList.add('dark_wrapper');
+        document.querySelector('.search_space').classList.add('dark_content');
+        document.querySelector('.search_bar').classList.add('dark_content');
+        document.querySelector('.user_details').classList.add('dark_content');
+
+        document.querySelector('.search_bar').classList.add('dark_sbdf');
+        document.querySelector('.date').classList.add('dark_sbdf');
+        document.querySelector('.f1').classList.add('dark_sbdf');
+        document.querySelector('.f0').classList.add('dark_sbdf');
+        document.querySelector('.f2').classList.add('dark_sbdf');
+        document.querySelector('.name').classList.add('dark_name');
+        document.querySelector('.dark_mode').classList.add('dark_name');
+
+        document.querySelector('.real_name').classList.add('dark_namenum');
+        document.querySelector('.repos').classList.add('dark_namenum');
+        document.querySelector('.Followers').classList.add('dark_namenum');
+        document.querySelector('.Following').classList.add('dark_namenum');
+        document.querySelector('.user_name').classList.add('dark_uname');
+        document.querySelector('.bio').classList.add('dark_bio');
+
+
+        document.querySelector('.links').classList.add('dark_name');
+        
+        document.querySelector('.dark_mode p').innerHTML = 'LIGHT';
+        document.querySelector('.moon').style.display = 'none';
+        document.querySelector('.sun').style.display = 'flex';
+        
+    }
+    else{
+        mode = 1;
+        document.querySelector('.wrapper').classList.remove('dark_wrapper');
+        document.querySelector('.search_space').classList.remove('dark_content');
+        document.querySelector('.search_bar').classList.remove('dark_content');
+        document.querySelector('.user_details').classList.remove('dark_content');
+
+        document.querySelector('.search_bar').classList.remove('dark_sbdf');
+        document.querySelector('.date').classList.remove('dark_sbdf');
+        document.querySelector('.f1').classList.remove('dark_sbdf');
+        document.querySelector('.f0').classList.remove('dark_sbdf');
+        document.querySelector('.f2').classList.remove('dark_sbdf');
+        document.querySelector('.name').classList.remove('dark_name');
+        document.querySelector('.dark_mode').classList.remove('dark_name');
+
+        document.querySelector('.real_name').classList.remove('dark_namenum');
+        document.querySelector('.repos').classList.remove('dark_namenum');
+        document.querySelector('.Followers').classList.remove('dark_namenum');
+        document.querySelector('.Following').classList.remove('dark_namenum');
+        document.querySelector('.user_name').classList.remove('dark_uname');
+        document.querySelector('.bio').classList.remove('dark_bio');
+
+
+        document.querySelector('.links').classList.remove('dark_name');
+        
+        document.querySelector('.dark_mode p').innerHTML = 'DARK';
+        document.querySelector('.sun').style.display = 'none';
+        document.querySelector('.moon').style.display = 'flex';
+        
+    }
+}
+
+
