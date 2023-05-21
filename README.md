@@ -1,2 +1,2 @@
 # devHub
-check any public gitHub profile
+View any public gitHub profile
