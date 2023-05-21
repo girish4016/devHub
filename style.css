@@ -29,7 +29,7 @@
     width: 100%;
     margin-top: 30px;
 }
-.heading h3{
+.name{
     color: rgba(0, 0, 0, 0.649);
     font-size: 50px;
     text-decoration: 5px underline #0077ffb1;
@@ -42,14 +42,16 @@
     justify-content: center;
     gap: 5px;
 }
+.dark_mode:hover{
+    cursor: pointer;
+}
 .moon{
     width: 15px;
     height: 15px;
 }
 .sun{
-    width: 15px;
-    height: 15px;
-    visibility: hidden;
+    width: 17px;
+    height: 17px;
     display: none;
 }
 
@@ -98,6 +100,19 @@
     justify-content: center;
     font-weight: bold;
     font-size: 15px;
+    position: relative;
+}
+.search_button:hover{
+    cursor: pointer;
+}
+
+.error_display{
+    color: red;
+    position: absolute;
+    font-size: 12px;
+    top: -45px;
+    background: none;
+    display: none;
 }
 
 .user_details{
@@ -179,109 +194,12 @@
     display: flex;
     margin-top: 7px
 }
-.follow p{
+.f1 , .f2 , .f0{
     font-size: small;
     color: rgba(0, 0, 0, 0.705);
 }
 .f1 , .f2{
     margin-left: 15px;
-}
-
-/* width 670 ke baad wrap center chiye */
-@media screen and (max-width : 900px){
-    
-    .user_img{
-        display: flex;
-        position: absolute;
-        top: 0;
-        margin-left: auto;
-        margin-right: auto;
-        width: 120px;
-        height: 120px;
-        align-items: center;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-    }
-    .prof_det{
-        margin-top: 0px;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        background-color: none;
-    }
-    .name_date{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        padding-top: 115px;
-    }
-    .names{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    .real_name{
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        font-size: medium;
-        color: rgba(0, 0, 0, 0.777);
-    }
-    .user_name{
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        color:rgba(0, 0, 255, 0.749);
-        align-items: center;
-    }
-    .date{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 1px;
-    }
-    .date p{
-        font-size: small;
-        color: rgba(0, 0, 0, 0.705);
-    }
-    .follow{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .heading{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-top: 30px;
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-    
-    .search_button{
-        display: flex;
-        width: 20%;
-        height: 100%;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        color: #FEFEFE;
-        background-color: #0079ff;
-        border-radius: 9px;
-        border: none;
-        align-items: center;
-        justify-content: center;
-        font-size: 9px;
-    }
 }
 
 .bio{
@@ -306,7 +224,7 @@
     background-color: #0079ff;
     border-end-start-radius: 12px;
     border-end-end-radius: 12px;
-    padding: 10px;
+    padding: 15px;
 }
 .links a {
     font-size: 16px;
@@ -389,7 +307,7 @@
         background-color: #0079ff;
         border-end-start-radius: 12px;
         border-end-end-radius: 12px;
-        padding: 5px;
+        padding: 10px;
     }
     .links a , .links p{
         display: none;
@@ -398,4 +316,124 @@
         color: rgba(255, 255, 255, 0.915);
     }
     
+}
+
+
+/* width 670 ke baad wrap center chiye */
+@media screen and (max-width : 900px){
+    
+    .user_img{
+        display: flex;
+        position: absolute;
+        top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 120px;
+        height: 120px;
+        align-items: center;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    .prof_det{
+        margin-top: 0px;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        background-color: none;
+    }
+    .name_date{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding-top: 115px;
+    }
+    .names{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .real_name{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: medium;
+        color: rgba(0, 0, 0, 0.777);
+    }
+    .user_name{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        color:rgba(0, 0, 255, 0.749);
+        align-items: center;
+    }
+    .date{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1px;
+        font-size: x-small;
+        color: rgba(0, 0, 0, 0.705);
+    }
+    .follow{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 30px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    .search_button{
+        display: flex;
+        width: 20%;
+        height: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #FEFEFE;
+        background-color: #0079ff;
+        border-radius: 9px;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+    }
+}
+
+
+.dark_wrapper{
+    background-color: #141d2f;
+}
+.dark_content{
+    background-color: #1e2a47;
+}
+.dark_sbdf{
+    color: rgba(255, 255, 255, 0.762);
+    background-color: none;
+}
+.dark_namenum{
+    color: rgba(255, 255, 255, 0.975);
+}
+.dark_uname{
+    color: #0079ff;
+}
+.dark_bio{
+    color: rgba(255, 255, 255, 0.642);
+}
+.dark_name{
+    color: rgba(255, 255, 255, 0.94);
 }
