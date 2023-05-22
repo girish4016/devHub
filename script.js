@@ -134,6 +134,8 @@ function invert_mode(){
         document.querySelector('.dark_mode p').innerHTML = 'LIGHT';
         document.querySelector('.moon').style.display = 'none';
         document.querySelector('.sun').style.display = 'flex';
+
+        localStorage.setItem('mode','dark');
         
     }
     else{
@@ -165,7 +167,15 @@ function invert_mode(){
         document.querySelector('.sun').style.display = 'none';
         document.querySelector('.moon').style.display = 'flex';
         
+        localStorage.setItem('mode','light');
     }
 }
 
+// check weather device is on dark mode
+
+if(((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)&&( localStorage.getItem('mode') != 'light' ))
+         || localStorage.getItem('mode') === 'dark' )
+{
+    invert_mode();
+}
 
